@@ -8,10 +8,10 @@ const clearScreen = (ref) => {
 
 const humanNameInput = document.getElementById("name");
 let humanName = document.getElementById("name").value;
-const humanFeet = document.getElementById("feet").value;
-const humanInches = document.getElementById("inches").value;
-const humanWeight = document.getElementById("weight").value;
-const humanDiet = document.getElementById("diet").value;
+const humanFeet = document.getElementById("feet");
+const humanInches = document.getElementById("inches");
+const humanWeight = document.getElementById("weight");
+const humanDiet = document.getElementById("diet");
 
 
 //Dinosaur Constructor
@@ -54,127 +54,54 @@ fetch("dino.json")
 
   });
 
+var myNewHuman;
 
+function createHuman(){
+  let height = parseInt(humanFeet) * 12 + parseInt(humanInches);
+    debugger
+    myNewHuman = new human(humanName, "human", humanWeight.value, height, humanDiet.value, compareWeight(humanWeight.value));
+    function compare(compareWeight, compareHeight, compareDiet){
+      function compareWeight(humanWeight){
+        let myRandNum = Math.floor(Math.random() * dinoArr.length);
+        let myMessage = `You are ${dinoArr[myRandNum].weight - humanWeight} pounds lighter than a ${dinoArr[myRandNum].name}`;
+        return myMessage;
+        };
+      function compareWeight(height){
+        let myRandNum = Math.floor(Math.random() * dinoArr.length);
+        let myMessage = `You are ${dinoArr[myRandNum].height - height} pounds shorter than a ${dinoArr[myRandNum].name}`;
+        return myMessage;
+        };
+    }
+}
 
-
-//Creating Human DOM Elements
-function getHumanData() {
-  return (function () {
-    let height = parseInt(humanFeet) * 12 + parseInt(humanInches);
-    return new human(humanName, "human", humanWeight, height, humanDiet, dinoArr.weight);
-  })();
-};
-
-
-
-
-
-
-
-let humanData = getHumanData();  
 
 //Creating Tiles
 function populateTiles() {
   clearScreen(formRef);
-  dinoArr.splice(4,0,humanData);
+  dinoArr.splice(4,0,myNewHuman);
   for (let i = 0; i < dinoArr.length; i++){
     const tile = document.createElement("div")
     tile.className = "grid-item"
     tile.innerHTML = `<h2>${dinoArr[i].name}</h2> <img src="images/${dinoArr[i].species.toLowerCase()}.png"/> <h3>${dinoArr[i].fact}</h3>`
     document.querySelector("#grid").appendChild(tile)
   };
-
 };
-
-
 
 
 humanNameInput.addEventListener("change", (event) =>{
   console.log(event.target.value);
   humanName = event.target.value;
-  humanData = getHumanData();
-  
-  function compareWeight(){
-    // let myRandNum = Math.floor(Math.random() * dinoArr.length);
-    // // console.log(dinoArr[myRandNum])
-    // let myMessage = `You are ${dinoArr[myRandNum].weight - humanData.weight} pounds lighter than a ${dinoArr[myRandNum].name}`;
-    let myMessage = dinoArr;
-    return myMessage;
-    // console.log(dinoArr.length)
-    };
-
-    compareWeight = compareWeight();
-
+  // humanData = getHumanData();
 })
+
 
 
 
 
 //It's a button
 button.addEventListener("click", () => {
+  createHuman()
   populateTiles()
   console.log(humanName)
   // alert(humanName);
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Dead Code, might use later
-// let humanArr = [];
-// fetch(humanData)
-//   .then((response) => {
-//     return response.json();
-//   })
-//   .then((data) => {
-//     data.human.forEach(human =>{
-//       let humanObj = new human(human.name, human.species, human.weight, human.height, human.diet, human.where, human.when, human.fact)
-//       humanArr.push(humanObj)
-//     })
-//   }); 
-// console.log(humanArr);
-
-// function populateHumanTiles() {
-//   let humanData = getHumanData();
-//   clearScreen(formRef);
-//   dinoArr.splice(4,0,humanData);
-//   for (let i = 0; i < dinoArr.length; i++){
-//     const tile = document.createElement("div")
-//     tile.className = "grid-item:nth-child(5)"
-//     tile.innerHTML = `<h2>${humanName}</h2><p><h2>Human</h2></p> <img src="/images/human.png"/> <h3>You are ${human.fact} smaller than ${dinoArr[i].species}.</h3>`
-//     document.querySelector("#grid").appendChild(tile)
-//     console.log(humanData);
-//   };
-// };
-
+})
