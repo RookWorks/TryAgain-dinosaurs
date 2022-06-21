@@ -59,24 +59,29 @@ var myNewHuman;
 function createHuman(){
   let height = parseInt(humanFeet) * 12 + parseInt(humanInches);
     debugger
-    myNewHuman = new human(humanName, "human", humanWeight.value, height, humanDiet.value, compareWeight(humanWeight.value));
+    compareArray = [compareWeight(), compareHeight(), compareDiet()]; 
+    const compareRand = Math.floor(Math.random() * compareArray.length);
+
+    myNewHuman = new human(humanName, "human", humanWeight.value, height, humanDiet.value, compareRand);
     function compareWeight(humanWeight){
       let myRandNum = Math.floor(Math.random() * dinoArr.length);
       let myMessage = `You are ${dinoArr[myRandNum].weight - humanWeight} pounds lighter than a ${dinoArr[myRandNum].name}.`;
+      // console.log("I am weight");
       return myMessage;
       };
-  //   function compareHeight(height){
-  //     let myRandNum = Math.floor(Math.random() * dinoArr.length);
-  //     let myMessage = `You are ${dinoArr[myRandNum].height - height} pounds shorter than a ${dinoArr[myRandNum].name}.`;
-  //     return myMessage;
-  //     };
-  //   function compareDiet(humanDiet){
-  //     let myRandNum = Math.floor(Math.random() * dinoArr.length);
-  //     let myMessage = `You're a ${humanDiet} while ${dinoArr[myRandNum].name} is a ${dinoArr[myRandNum].diet}.`;
-  //     return myMessage;
-  //     };
-  // const compareRand = Math.floor(Math.random() * compareArray.length);
-  // compareArray = [compareWeight(), compareHeight(), compareDiet()]; 
+    function compareHeight(height){
+      let myRandNum = Math.floor(Math.random() * dinoArr.length);
+      let myMessage = `You are ${dinoArr[myRandNum].height - height} pounds shorter than a ${dinoArr[myRandNum].name}.`;
+      // console.log("I am height");
+      return myMessage;
+      };
+    function compareDiet(humanDiet){
+      let myRandNum = Math.floor(Math.random() * dinoArr.length);
+      let myMessage = `You're a ${humanDiet} while ${dinoArr[myRandNum].name} is a ${dinoArr[myRandNum].diet}.`;
+      // console.log("I am diet");
+      return myMessage;
+      };
+console.log(compareRand)
 };
     
     
