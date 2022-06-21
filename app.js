@@ -60,19 +60,27 @@ function createHuman(){
   let height = parseInt(humanFeet) * 12 + parseInt(humanInches);
     debugger
     myNewHuman = new human(humanName, "human", humanWeight.value, height, humanDiet.value, compareWeight(humanWeight.value));
-    function compare(compareWeight, compareHeight, compareDiet){
-      function compareWeight(humanWeight){
-        let myRandNum = Math.floor(Math.random() * dinoArr.length);
-        let myMessage = `You are ${dinoArr[myRandNum].weight - humanWeight} pounds lighter than a ${dinoArr[myRandNum].name}`;
-        return myMessage;
-        };
-      function compareWeight(height){
-        let myRandNum = Math.floor(Math.random() * dinoArr.length);
-        let myMessage = `You are ${dinoArr[myRandNum].height - height} pounds shorter than a ${dinoArr[myRandNum].name}`;
-        return myMessage;
-        };
-    }
-}
+    function compareWeight(humanWeight){
+      let myRandNum = Math.floor(Math.random() * dinoArr.length);
+      let myMessage = `You are ${dinoArr[myRandNum].weight - humanWeight} pounds lighter than a ${dinoArr[myRandNum].name}.`;
+      return myMessage;
+      };
+  //   function compareHeight(height){
+  //     let myRandNum = Math.floor(Math.random() * dinoArr.length);
+  //     let myMessage = `You are ${dinoArr[myRandNum].height - height} pounds shorter than a ${dinoArr[myRandNum].name}.`;
+  //     return myMessage;
+  //     };
+  //   function compareDiet(humanDiet){
+  //     let myRandNum = Math.floor(Math.random() * dinoArr.length);
+  //     let myMessage = `You're a ${humanDiet} while ${dinoArr[myRandNum].name} is a ${dinoArr[myRandNum].diet}.`;
+  //     return myMessage;
+  //     };
+  // const compareRand = Math.floor(Math.random() * compareArray.length);
+  // compareArray = [compareWeight(), compareHeight(), compareDiet()]; 
+};
+    
+    
+
 
 
 //Creating Tiles
