@@ -25,8 +25,9 @@ function dinosaur(name, species, weight, height, diet, where, when, fact) {
   this.when = when;
   this.fact = fact;
 };
-
-
+debugger
+let height = Number(humanFeet.value) * 12 + Number(humanInches.value);
+debugger
 //Human Constructor
 function human(name, species, weight, height, diet, fact) {
   this.species = species;
@@ -57,12 +58,13 @@ fetch("dino.json")
 var myNewHuman;
 
 function createHuman(){
-  let height = parseInt(humanFeet) * 12 + parseInt(humanInches);
+  
+  
     debugger
-    compareArray = [compareWeight(), compareHeight(), compareDiet()]; 
-    const compareRand = Math.floor(Math.random() * compareArray.length);
+    let compareArray = [compareWeight(humanWeight.value), compareHeight(height), compareDiet(humanDiet.value)]; 
+    const compareRandomNumber = Math.floor(Math.random() * compareArray.length);
 
-    myNewHuman = new human(humanName, "human", humanWeight.value, height, humanDiet.value, compareRand);
+    myNewHuman = new human(humanName, "human", humanWeight.value, height, humanDiet.value, compareArray[compareRandomNumber]);
     function compareWeight(humanWeight){
       let myRandNum = Math.floor(Math.random() * dinoArr.length);
       let myMessage = `You are ${dinoArr[myRandNum].weight - humanWeight} pounds lighter than a ${dinoArr[myRandNum].name}.`;
@@ -70,9 +72,11 @@ function createHuman(){
       return myMessage;
       };
     function compareHeight(height){
+      debugger
       let myRandNum = Math.floor(Math.random() * dinoArr.length);
-      let myMessage = `You are ${dinoArr[myRandNum].height - height} pounds shorter than a ${dinoArr[myRandNum].name}.`;
+      let myMessage = `You are ${dinoArr[myRandNum].height - height} inches shorter than a ${dinoArr[myRandNum].name}.`;
       // console.log("I am height");
+      debugger
       return myMessage;
       };
     function compareDiet(humanDiet){
@@ -81,10 +85,11 @@ function createHuman(){
       // console.log("I am diet");
       return myMessage;
       };
-console.log(compareRand)
+  console.log(height)
+  // console.log(compareRand)
 };
     
-    
+// compareWeight(humanWeight.value)     
 
 
 
